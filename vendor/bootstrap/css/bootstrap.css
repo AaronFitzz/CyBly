@@ -3672,6 +3672,7 @@ tbody.collapse.show {
   background: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+float:right;
 }
 
 .navbar-toggler:focus, .navbar-toggler:hover {
@@ -3686,6 +3687,7 @@ tbody.collapse.show {
   content: "";
   background: no-repeat center center;
   background-size: 100% 100%;
+float:right;
 }
 
 @media (max-width: 575px) {
