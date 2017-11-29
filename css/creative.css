@@ -71,11 +71,17 @@ img::-moz-selection {
 body {
   -webkit-tap-highlight-color: #212529; }
 
+  input{
+	  margin-bottom:20px;
+  }
 #NavLogo{
 max-width:30%;
 height:auto;
 background-color:rgba(255, 255, 255, 0.3);
 border-radius:20px;
+}
+#signInDetail{
+	display:none;
 }
 #mainNav {
   border-bottom: 1px solid rgba(33, 37, 41, 0.1);
