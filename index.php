@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+  session_start();
+?>
 <html lang="en">
 
 <head>
@@ -7,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Creative - Start Bootstrap Theme</title>
+  <title>CyBly</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -36,7 +39,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#signInPlace">Sign In/Register</a>
+            <a class="nav-link js-scroll-trigger" href="#signInPlace">Sign In/Register<?php echo "Welcome " . $_SESSION['mail'] . "";?></a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#tool">Download Tool</a>
@@ -92,10 +95,11 @@
         <div class="col-lg-6 mx-auto text-center">
           <h2 class="section-heading text-white">Sign In</h2>
           <hr class="light my-4">
-          <form id="signInForm">
-            <input type="text" placeholder="Username/Email" class="form-control" id="usernameEmail"><br>
-            <input type="password" placeholder="Password" class="form-control" id="password"><br>
+          <form id="signInForm" action='login.php' method='get'>
+            <input type="text" placeholder="Username/Email" class="form-control" id="usernameEmail" name='emailuser'><br>
+            <input type="password" placeholder="Password" class="form-control" id="password" name="password"><br>
             <a class="btn btn-light btn-xl js-scroll-trigger" id="signInBtnPlace">Sign In</a>
+            <input type="submit">
           </form>
         </div>
         <div class="col-lg-6 mx-auto text-center">

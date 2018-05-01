@@ -6,12 +6,12 @@
  */ 
 mysql_connect("localhost","root","");
 mysql_select_db("cybly");
-
-	if(isset($_POST['submit_x'])){
 	
 	 $username = $_POST['username'];
 	 $email = $_POST['email'];
 	 $password = $_POST['password'];
+	 
+	 $password = password_hash($password, PASSWORD_BCRYPT);
 	
 	if($username==''||$username==null|strlen($username)<"2"){
 	echo "<script>alert('Username must be filled out')</script>";
@@ -28,7 +28,7 @@ mysql_select_db("cybly");
   	exit();
 	}
 	
-	$check_email = "select * from users where user_email='$email'";
+	$check_email = "select * from users where email ='$email'";
 	
 	$run = mysql_query($check_email);
 	
@@ -54,7 +54,5 @@ mysql_select_db("cybly");
 	echo "<script>window.open('index.php','_self')</script>";
 	
 	}
-	
-}
 
 ?>
