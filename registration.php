@@ -1,58 +1,69 @@
 <?php
-/*
- * This is just a template and needs to be drastically changed to work.
- * also need to develop register form, just have log in currently.
- *
- */ 
+
+//Start or resume session, used for cookie data
+session_start();
+
+//Connet to the database
 mysql_connect("localhost","root","");
 mysql_select_db("cybly");
 	
-	 $username = $_POST['username'];
-	 $email = $_POST['email'];
-	 $password = $_POST['password'];
+//Extract values from html form 'name' tags
+$username = $_POST['username'];
+$email = $_POST['email'];
+$password = $_POST['password'];
 	 
-	 $password = password_hash($password, PASSWORD_BCRYPT);
-	
-	if($username==''||$username==null|strlen($username)<"2"){
+//Hash password
+$password = password_hash($password, PASSWORD_BCRYPT);
+
+//Validate username
+if($username==''||$username==null|strlen($username)<"2"){
 	echo "<script>alert('Username must be filled out')</script>";
 	exit();
-	}
+}
 	
-	if($password==''||$password==null||strlen($password)<"7"){
+//Validate password
+if($password==''||$password==null||strlen($password)<"7"){
 	echo "<script>alert('Password must be at least 7 characters long')</script>";
 	exit();
-	}
+}
 	
-	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//Validate email
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   	echo "<script>alert('Invalid email format')</script>";
   	exit();
-	}
-	
-	$check_email = "select * from users where email ='$email'";
-	
-	$run = mysql_query($check_email);
-	
-	if(mysql_num_rows($run)>0){
-	
+}
+
+//Get user by email string
+$check_email = "select * from users where email ='$email'";
+
+//Run get user by email query
+$run = mysql_query($check_email);
+
+//Check number of results in query, if more than 0 than email taken
+if(mysql_num_rows($run)>0){
 	echo "<script>alert('The email $email is already registered to another users account, please try a different one')</script>";
 	exit();
-	}
-	
-	$check_username = "select * from users where username='$username'";
-	
-	$run = mysql_query($check_username);
-	
-	if(mysql_num_rows($run)>0){
-	
+}
+
+//Get username string
+$check_username = "select * from users where username='$username'";
+
+//Run get username query
+$run = mysql_query($check_username);
+
+//If anyone has this username, return error
+if(mysql_num_rows($run)>0){
 	echo "<script>alert('The username $username is already taken, please choose another one')</script>";
 	exit();
-	}
-	
-	$_SESSION["mail"] = $username;
-	$query = "insert into users (username,email,password) values ('$username','$email','$password')";
-	if(mysql_query($query)){
-	echo "<script>window.open('index.php','_self')</script>";
-	
-	}
+}
+
+//Session variable = username	
+$_SESSION["mail"] = $username;
+$query = "insert into users (username,email,password) values ('$username','$email','$password')";
+
+//Open main content page
+if(mysql_query($query)){
+	echo "<script>window.open('maincontent.php','_self')</script>";
+}
 
 ?>

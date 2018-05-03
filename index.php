@@ -35,11 +35,20 @@
       <a class="nav-item" style="max-width:50%;" href="#page-top"><img id="NavLogo" style="float:left;"src="img/CyBlyLogo.png"></a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-        </button>
+      </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#signInPlace">Sign In/Register<?php echo "Welcome " . $_SESSION['mail'] . "";?></a>
+            <a class="nav-link js-scroll-trigger" href="#signInPlace">
+            <?php
+              if($_SESSION['mail'] != null){
+                echo "Welcome " . $_SESSION['mail'] . "";  
+              }
+              else{
+                echo "Sign In/Register";
+              }
+            ?>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#tool">Download Tool</a>
@@ -53,6 +62,13 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
           </li>
+          <?php
+              if($_SESSION['mail'] != null){
+                echo '<li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" onclick="confirmBeforeLogout();" >Logout</a>
+                      </li>';  
+              }
+            ?>
         </ul>
       </div>
     </div>
@@ -80,10 +96,18 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
-          <h2 class="section-heading text-white">Get Started</h2>
-          <hr class="light my-4">
-          <p class="text-faded mb-4">Sign in to access the full features of CyBly.</p>
-          <a class="btn btn-light btn-xl js-scroll-trigger" id="signInBtnPlace">Sign In/Register</a>
+          <?php  
+            if($_SESSION['mail'] == null){
+              echo '<h2 class="section-heading text-white">Get Started</h2>
+                    <hr class="light my-4">
+                    <p class="text-faded mb-4">Sign in to access the full features of CyBly.</p>
+                    <a class="btn btn-light btn-xl js-scroll-trigger" id="signInBtnPlace">Sign In/Register</a>';
+            }
+            else{
+              include 'contentref.php';
+            }
+          ?>
+          
         </div>
       </div>
     </div>
@@ -98,8 +122,7 @@
           <form id="signInForm" action='login.php' method='get'>
             <input type="text" placeholder="Username/Email" class="form-control" id="usernameEmail" name='emailuser'><br>
             <input type="password" placeholder="Password" class="form-control" id="password" name="password"><br>
-            <a class="btn btn-light btn-xl js-scroll-trigger" id="signInBtnPlace">Sign In</a>
-            <input type="submit">
+            <input class="btn btn-light btn-xl js-scroll-trigger" id="signInBtnPlace" type="submit" value="Sign In">
           </form>
         </div>
         <div class="col-lg-6 mx-auto text-center">
@@ -110,8 +133,7 @@
             <input type="email" placeholder="Email" class="form-control"name="email"><br>
             <input type="password" placeholder="Password" class="form-control" name="password"><br>
             <input type="password" placeholder="Confirm Password" class="form-control" name="confirmPassword"><br>
-            <a class="btn btn-light btn-xl js-scroll-trigger" id="registerBtnPlace" name="submit">Register</a>
-            <input type="submit">
+            <input class="btn btn-light btn-xl js-scroll-trigger" id="registerBtnPlace" type="submit" value="Register">
           </form>
         </div>
       </div>
@@ -292,8 +314,9 @@
   <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
   <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-  <!-- Custom scripts for this template -->
+  <!-- Custom js/jquery scripts-->
   <script src="js/creative.js"></script>
+  <script src="js/cybly.js"></script>
 
 </body>
 
