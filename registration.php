@@ -1,5 +1,21 @@
 <?php
 
+$urlResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcKVlcUAAAAAEsxLFe2ucgwJWlupl_4JTDL0pp_&response=".$_POST["g-recaptcha-response"]."&remoteip=".$_SERVER['REMOTE_ADDR']);
+$result = json_decode($urlResponse);
+
+if($result->success == false)
+{
+//error handling
+echo "<script>alert('Please complete the Captcha')</script>";
+	echo "<script>window.open('index.php','_self')</script>";
+}
+else
+{
+	//passes
+	
+    //
+    // Your code here to handle a successful verification
+  
 //Start or resume session, used for cookie data
 session_start();
 
@@ -16,20 +32,23 @@ $password = $_POST['password'];
 $password = password_hash($password, PASSWORD_BCRYPT);
 
 //Validate username
-if($username==''||$username==null|strlen($username)<"2"){
-	echo "<script>alert('Username must be filled out')</script>";
+if($username==''||$username==null|strlen($username)<"3"){
+	echo "<script>alert('Username must longer than 3 characters')</script>";
+	echo "<script>window.open('index.php','_self')</script>";
 	exit();
 }
 	
 //Validate password
 if($password==''||$password==null||strlen($password)<"7"){
 	echo "<script>alert('Password must be at least 7 characters long')</script>";
+	echo "<script>window.open('index.php','_self')</script>";
 	exit();
 }
 	
 //Validate email
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  	echo "<script>alert('Invalid email format')</script>";
+  	echo "<script>alert('Please enter a valid email')</script>";
+  	echo "<script>window.open('index.php','_self')</script>";
   	exit();
 }
 
@@ -42,6 +61,7 @@ $run = mysql_query($check_email);
 //Check number of results in query, if more than 0 than email taken
 if(mysql_num_rows($run)>0){
 	echo "<script>alert('The email $email is already registered to another users account, please try a different one')</script>";
+	echo "<script>window.open('index.php','_self')</script>";
 	exit();
 }
 
@@ -54,6 +74,7 @@ $run = mysql_query($check_username);
 //If anyone has this username, return error
 if(mysql_num_rows($run)>0){
 	echo "<script>alert('The username $username is already taken, please choose another one')</script>";
+	echo "<script>window.open('index.php','_self')</script>";
 	exit();
 }
 
@@ -64,6 +85,7 @@ $query = "insert into users (username,email,password) values ('$username','$emai
 //Open main content page
 if(mysql_query($query)){
 	echo "<script>window.open('maincontent.php','_self')</script>";
+}
 }
 
 ?>

@@ -43,20 +43,24 @@ if($check_pass>0){
     if (password_verify($password, $UserPass)) {
         echo "<script>window.open('maincontent.php','_self')</script>";
     } else {
-        echo 'You entered the wrong password';
+        echo "<script>alert('You entered the wrong password')</script>";
+	    echo "<script>window.open('index.php','_self')</script>";
     }
 }
 
 //Blank email/password, retry
 if($emailuser == '') {
     echo "<script>alert('Please enter email/username and try again')</script>";
+    echo "<script>window.open('index.php','_self')</script>";
 }
 //Blank password, retry
-else if($pass == '') {
+else if($password == '') {
     echo "<script>alert('Please enter a password')</script>";
+    echo "<script>window.open('index.php','_self')</script>";
 }
 //Email/password doesn't match account
 else{  
     echo "<script>alert('Email or password is not correct, try again!')</script>";
+    echo "<script>window.open('index.php','_self')</script>";
 }
 ?>

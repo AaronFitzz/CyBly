@@ -25,6 +25,8 @@
 
   <!-- Custom styles for this template -->
   <link href="css/creative.css" rel="stylesheet">
+  
+  <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body id="page-top">
@@ -36,7 +38,7 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse" style="width:250%;"id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#signInPlace">
@@ -85,8 +87,7 @@
         </div>
         <div class="col-lg-8 mx-auto">
           <p class="text-faded mb-5">CyBly is an online portal providing tools to gain insights on instances on Cyber Bullying and helps direct victims to the necessary resources</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#signIn">Find Out More</a>
-          <a href="https://play.google.com/store" target="_blank"><img href="https://play.google.com/store" style="width:230px"src="img/google_play.png"></a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#tool">Find Out More</a>
         </div>
       </div>
     </div>
@@ -101,7 +102,7 @@
               echo '<h2 class="section-heading text-white">Get Started</h2>
                     <hr class="light my-4">
                     <p class="text-faded mb-4">Sign in to access the full features of CyBly.</p>
-                    <a class="btn btn-light btn-xl js-scroll-trigger" id="signInBtnPlace">Sign In/Register</a>';
+                    <a class="btn btn-light btn-xl js-scroll-trigger" id="signInBtnPlace" >Sign In/Register</a>';
             }
             else{
               include 'contentref.php';
@@ -133,6 +134,7 @@
             <input type="email" placeholder="Email" class="form-control"name="email"><br>
             <input type="password" placeholder="Password" class="form-control" name="password"><br>
             <input type="password" placeholder="Confirm Password" class="form-control" name="confirmPassword"><br>
+            <div style="margin: 0 auto; width:55%;" class="g-recaptcha" data-sitekey="6LcKVlcUAAAAAJ7Vnl7PQr_FtYjUUnT3c_IhDPTU"></div><br>
             <input class="btn btn-light btn-xl js-scroll-trigger" id="registerBtnPlace" type="submit" value="Register">
           </form>
         </div>
@@ -165,7 +167,7 @@
           <h2 class="section-heading text-white">Text Analysation Tool</h2>
           <hr class="light my-4">
           <p class="text-faded mb-4">Download this tool to analyse any text for the likelihood of cyber bullying. A measurement is given based on the presence of offensive material and if it is aimed at an individual or group.</p>
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="#contact">Download Now</a>
+          <a class="btn btn-light btn-xl js-scroll-trigger" id="textAnalBtn" href="#signInPlace">Sign Up/Register to Access</a>
         </div>
       </div>
     </div>
@@ -178,7 +180,7 @@
           <h2 class="section-heading text-white">Take A Questionnaire</h2>
           <hr class="light my-4">
           <p class="text-faded mb-4">Contribute your experience and help the community understand patterns in Cyber Bullying</p>
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="#contact">Start</a>
+          <a class="btn btn-light btn-xl js-scroll-trigger" href="#signInPlace">Sign Up/Register to Access</a>
         </div>
       </div>
     </div>
@@ -317,7 +319,6 @@
   <!-- Custom js/jquery scripts-->
   <script src="js/creative.js"></script>
   <script src="js/cybly.js"></script>
-
 </body>
 
 </html>

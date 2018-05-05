@@ -14,12 +14,13 @@
       }
     }
   });
+  
   	// Hides login section and presents login form
 	$("#signInBtnPlace").click(function(){
     $("#signInPlace").hide();
 	$("#signInDetail").show();
 });
-  
+
   // Closes responsive menu when a scroll trigger link is clicked
   $('.js-scroll-trigger').click(function() {
     $('.navbar-collapse').collapse('hide');
@@ -76,5 +77,4 @@
       tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
     }
   });
-
 })(jQuery); // End of use strict

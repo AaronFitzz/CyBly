@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
   session_start();
+  //if not signes in, send back to index.
   if($_SESSION['mail'] == null){
     echo "<script>window.open('index.php','_self')</script>";
   }
@@ -39,7 +40,7 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse" style="width:250%;" d="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#signInPlace"><?php echo "Welcome " . $_SESSION['mail'] . "";?></a>
@@ -75,8 +76,7 @@
         </div>
         <div class="col-lg-8 mx-auto">
           <p class="text-faded mb-5">CyBly is an online portal providing tools to gain insights on instances on Cyber Bullying and helps direct victims to the necessary resources</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#signIn">Find Out More</a>
-          <a href="https://play.google.com/store" target="_blank"><img href="https://play.google.com/store" style="width:230px"src="img/google_play.png"></a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#signInPlace">Find Out More</a>
         </div>
       </div>
     </div>
@@ -135,8 +135,8 @@
         <div class="col-lg-8 mx-auto text-center">
           <h2 class="section-heading text-white">Text Analysation Tool</h2>
           <hr class="light my-4">
-          <p class="text-faded mb-4">Download this tool to analyse any text for the likelihood of cyber bullying. A measurement is given based on the presence of offensive material and if it is aimed at an individual or group.</p>
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="#contact">Download Now</a>
+          <p class="text-faded mb-4">Download this tool to analyse any text for the likelihood of cyber bullying. A indication is given based on the presence of offensive material and if it is aimed at an individual or group.</p>
+          <a class="btn btn-light btn-xl js-scroll-trigger" href="analyser/TextAnalyserTool.exe">Download Now</a>
         </div>
       </div>
     </div>
