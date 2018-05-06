@@ -27,7 +27,7 @@
   <!-- Plugin CSS -->
   <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
+  <!-- Custom styles -->
   <link href="css/creative.css" rel="stylesheet">
 </head>
 
@@ -65,78 +65,19 @@
     </div>
   </nav>
 
-  <header class="masthead text-center text-white d-flex">
-    <div class="container my-auto">
-      <div class="row">
-        <div class="col-lg-10 mx-auto">
-          <h1 class="text-uppercase">
-            <strong>Lets tackle Cyber Bullying</strong>
-          </h1>
-          <hr>
-        </div>
-        <div class="col-lg-8 mx-auto">
-          <p class="text-faded mb-5">CyBly is an online portal providing tools to gain insights on instances on Cyber Bullying and helps direct victims to the necessary resources</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#signInPlace">Find Out More</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <section class="bg-primary" id="signInDetail">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 mx-auto text-center">
-          <h2 class="section-heading text-white">Sign In</h2>
-          <hr class="light my-4">
-          <form id="signInForm" action='login.php' method='get'>
-            <input type="text" placeholder="Username/Email" class="form-control" id="usernameEmail" name='emailuser'><br>
-            <input type="password" placeholder="Password" class="form-control" id="password" name="password"><br>
-            <a class="btn btn-light btn-xl js-scroll-trigger" id="signInBtnPlace">Sign In</a>
-            <input type="submit">
-          </form>
-        </div>
-        <div class="col-lg-6 mx-auto text-center">
-          <h2 class="section-heading text-white">Register</h2>
-          <hr class="light my-4">
-          <form id="registerForm" action='registration.php' method='post' >
-            <input type="text" placeholder="Username" class="form-control" name="username"><br>
-            <input type="email" placeholder="Email" class="form-control"name="email"><br>
-            <input type="password" placeholder="Password" class="form-control" name="password"><br>
-            <input type="password" placeholder="Confirm Password" class="form-control" name="confirmPassword"><br>
-            <a class="btn btn-light btn-xl js-scroll-trigger" id="registerBtnPlace" name="submit">Register</a>
-            <input type="submit">
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!--can remove if register working okay-->
-
-  <!--<section class="bg-primary" id="registerDetail">-->
-  <!--  <div class="container">-->
-  <!--    <div class="row">-->
-  <!--      <div class="col-lg-8 mx-auto text-center">-->
-  <!--        <h2 class="section-heading text-white">Register</h2>-->
-  <!--        <hr class="light my-4">-->
-  <!--    			<input type="text" placeholder="Username"><br>-->
-  <!--    			<input type="email" placeholder="Email"><br>-->
-  <!--    			<input type="password" placeholder="Password"><br>-->
-  <!--    			<input type="password" placeholder="Confirm Password"><br>-->
-  <!--        <a class="btn btn-light btn-xl js-scroll-trigger" id="registerBtnPlace">Register</a>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</section>-->
-
   <section class="bg-dark text-white" id="tool">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto text-center">
+        <div class="col-lg-4 mx-auto text-center">
           <h2 class="section-heading text-white">Text Analysation Tool</h2>
           <hr class="light my-4">
-          <p class="text-faded mb-4">Download this tool to analyse any text for the likelihood of cyber bullying. A indication is given based on the presence of offensive material and if it is aimed at an individual or group.</p>
+          <p class="text-faded mb-4">Download this tool to analyse any text for the likelihood of cyber bullying. A indication is given based on the presence of offensive material and if it is aimed at an individual or group. (PC Only)</p>
           <a class="btn btn-light btn-xl js-scroll-trigger" href="analyser/TextAnalyserTool.exe">Download Now</a>
+        </div>
+        <div class="col-lg-4 mx-auto text-center">
+          <h2 class="section-heading text-white">Text Analysation Tool Instructions</h2>
+          <hr class="light my-4">
+          <p class="text-faded mb-4">Add some screenshots and basic instructions.</p>
         </div>
       </div>
     </div>
@@ -145,15 +86,176 @@
   <section class="bg-primary" id="questionnaire">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto text-center">
+        <div class="col-lg-4 mx-auto text-center">
           <h2 class="section-heading text-white">Take A Questionnaire</h2>
           <hr class="light my-4">
           <p class="text-faded mb-4">Contribute your experience and help the community understand patterns in Cyber Bullying</p>
           <a class="btn btn-light btn-xl js-scroll-trigger" href="#contact">Start</a>
         </div>
+        <div class="col-lg-4 mx-auto text-center">
+          <h2 class="section-heading text-white">Take the 30 second challenge!</h2>
+          <hr class="light my-4">
+          <p class="text-faded mb-4">Learn about cyber bullying and answer questions to show your knowledge.</p>
+          <a class="btn btn-light btn-xl js-scroll-trigger" id="challengeBtn" >Start</a>
+        </div>
       </div>
     </div>
   </section>
+  <script>
+    window.onload = function hideChal() {
+    document.getElementById("challenge").style.display = "none";
+    document.getElementById("challengeQ").style.display = "none";
+}
+  </script>
+  <div class="bg-primary" id="challenge">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-heading text-white">Remember as much as you can!</h2>
+          <div id="rounded-timer"><h1 class="text-white" id = "timer">30</h1></div>
+          <hr class="light my-4">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 mx-auto text-center">
+            <p class="text-white"><li class="text-white">70% of students report witnessing bullying online</li></p>
+        </div>
+        <div class="col-lg-4 mx-auto text-center">
+            <p class="text-white"><li class="text-white">80% of teenagers use mobile phones, making it the increasing number 1 medium for cyber bullying</li></p>
+        </div>
+        <div class="col-lg-4 mx-auto text-center">
+            <p class="text-white"><li class="text-white">Only 1 in 10 victims of cyber bullying tell a parent or trusted adult of the event</li></p>
+        </div>
+        <div class="col-lg-4 mx-auto text-center">
+            <p class="text-white"><li class="text-white">Girls are almost twice as likely to be the victim of cyber bullying</li></p>
+        </div>
+        <div class="col-lg-4 mx-auto text-center">
+            <p class="text-white"><li class="text-white">One in ten adults say they have been bullied online</li></p>
+        </div>
+        <div class="col-lg-4 mx-auto text-center">
+            <p class="text-white"><li class="text-white">Facebook is home to the most cases of cyber bullying</li></p>
+        </div>
+        <div class="col-lg-4 mx-auto text-center">
+            <p class="text-white"><li class="text-white">Unfriending the bully is the most common action taken by victims</li></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-primary" id="challengeQ">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-heading text-white">Answer some questions</h2>
+          <hr class="light my-4">
+          <form id="factsForm" action='somephpform' method='post'>
+            <h3 class="text-white">What % of students witnessed bullying online?</h3>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              10 <input type="radio"id="q1a" name="q1" value="10">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              30 <input type="radio" id="q1b" name="q1" value="30">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              70 <input type="radio" id="q1c" name="q1" value="70">
+              </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              90 <input type="radio"  id="q1d" name="q1" value="90">
+            </div>
+            
+            <hr class="light my-4">
+            
+            <h3 class="text-white">What is the primary medium for cyber bullying?</h3>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              Mobile Phones <input type="radio" id="q2a" name="q2" value="mobile">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              Desktops <input type="radio" id="q2b" name="q2" value="desktop">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              Games Consoles <input type="radio" id="q2c" name="q2" value="console">
+            </div>
+            
+            <hr class="light my-4">
+            
+            <h3 class="text-white">How many victims report cyber bullying to a parent or trusted adult?</h3>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              5 in 10 <input type="radio"id="q3a" name="q3" value="5in10">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              7 in 10 <input type="radio" id="q3b" name="q3" value="7in10">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              3 in 10 <input type="radio" id="q3c" name="q3" value="3in10">
+              </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              1 in 10 <input type="radio"  id="q3d" name="q3" value="1in10">
+            </div>
+            
+            <hr class="light my-4">
+            
+            <h3 class="text-white">Who is more likely to be bullied online?</h3>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              Boys <input type="radio"id="q4a" name="q4" value="boys">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              Girls <input type="radio" id="q4b" name="q4" value="girls">
+            </div>
+            
+            <hr class="light my-4">
+            
+            <h3 class="text-white">How many adults say they have been bullied online?</h3>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              4 in 10 <input type="radio"id="q5a" name="q5" value="4in10">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              3 in 10 <input type="radio" id="q5b" name="q5" value="3in10">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              7 in 10 <input type="radio" id="q5c" name="q5" value="7in10">
+              </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              1 in 10 <input type="radio"  id="q5d" name="q5" value="1in10">
+            </div>
+            
+            <hr class="light my-4">
+            
+            <h3 class="text-white">What platform sees the most cyber bullying?</h3>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              Twitter <input type="radio"id="q6a" name="q6" value="twitter">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              Instagram <input type="radio" id="q6b" name="q6" value="instagram">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              Facebook <input type="radio" id="q6c" name="q6" value="facebook">
+              </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              YouTube <input type="radio"  id="q6d" name="q6" value="youtube">
+            </div>
+            
+            <hr class="light my-4">
+            
+            <h3 class="text-white">What is the most common action taken by victims of cyber bullying?</h3>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              No Action <input type="radio"id="q1a" name="q1" value="none">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              Report Them <input type="radio" id="q1b" name="q1" value="report">
+            </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              Call the Authorities <input type="radio" id="q1c" name="q1" value="call">
+              </div>
+            <div class="text-white col-lg-3 mx-auto text-center">
+              Unfriend Them <input type="radio"  id="q1d" name="q1" value="unfriend">
+            </div>
+            
+            <input class="btn btn-light btn-xl js-scroll-trigger" id="queSubmit" type="submit" value="Submit">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section class="p-0" id="data">
     <div class="container-fluid p-0">

@@ -15,11 +15,27 @@
     }
   });
   
-  	// Hides login section and presents login form
+  	// Hides login button and presents login form
 	$("#signInBtnPlace").click(function(){
     $("#signInPlace").hide();
-	$("#signInDetail").show();
+	$("#signInDetail").fadeIn("slow");
 });
+
+$("#challengeBtn").click(function(){
+	$("#challenge").fadeIn("slow");
+	var timeAllowed = 30;
+	var CTimer = setInterval(function(){
+	  timeAllowed--;
+  var content = document.getElementById("timer");
+  content.innerHTML = timeAllowed;
+  if(timeAllowed <= 0)
+    clearInterval(CTimer);
+},1000);
+	$('#challenge').delay(30000).fadeOut();
+	$('#challengeQ').delay(30000).fadeIn();
+});
+
+
 
   // Closes responsive menu when a scroll trigger link is clicked
   $('.js-scroll-trigger').click(function() {

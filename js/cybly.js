@@ -10,6 +10,5 @@ function confirmBeforeLogout() {
 function Logout(){
   window.location.href = "logout.php";
 }
-
   
   
