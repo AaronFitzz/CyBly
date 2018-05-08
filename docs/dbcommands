@@ -5,3 +5,5 @@ phpmyadmin-ctl install
 mysql-ctl start
 
 https://cybly-x14715335.c9users.io/phpmyadmin/
+
+Added procfile as instructed by heroku
