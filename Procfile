@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-nginx cybly/
+web: vendor/bin/heroku-php-nginx 
