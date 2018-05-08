@@ -1,5 +1,9 @@
-CyBly is an online portal (web/android) for those interested and/or victims of cyber bullying.
+CyBly is an online web applications for those interested in the top of cyber bullying.
 
-It combines text analyzation tools, data visualisation, quizzes and references to helpful resources to aid users.
+The goal of the application is to provide informative tools to interested users.
 
-UI is modified from a bootstrap template sourced from: 'Blackrock Digital LLC. https://github.com/BlackrockDigital/startbootstrap-creative'
+It combines text analyzation tools, data visualisation, quizzes, questionnaires along with reference to helpful resources to aid users.
+
+Technologies used to develop include: PHP, MySQL, C#, JS, JQuery, HTML/CSS.
+
+Developed using cloud9/Visual Studio.

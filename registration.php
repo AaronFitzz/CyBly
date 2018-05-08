@@ -11,10 +11,7 @@ echo "<script>alert('Please complete the Captcha')</script>";
 }
 else
 {
-	//passes
-	
-    //
-    // Your code here to handle a successful verification
+//successful
   
 //Start or resume session, used for cookie data
 session_start();
@@ -27,9 +24,7 @@ mysql_select_db("cybly");
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-	 
-//Hash password
-$password = password_hash($password, PASSWORD_BCRYPT);
+$confPassword = $_POST['confirmPassword'];
 
 //Validate username
 if($username==''||$username==null|strlen($username)<"3"){
@@ -44,6 +39,13 @@ if($password==''||$password==null||strlen($password)<"7"){
 	echo "<script>window.open('index.php','_self')</script>";
 	exit();
 }
+
+//Do passwords match
+if($password != $confPassword){
+	echo "<script>alert('Passwords dont match, try again!')</script>";
+	echo "<script>window.open('index.php','_self')</script>";
+	exit();
+}
 	
 //Validate email
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -51,6 +53,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   	echo "<script>window.open('index.php','_self')</script>";
   	exit();
 }
+
+//Hash and encrypt password
+$password = password_hash($password, PASSWORD_BCRYPT);
 
 //Get user by email string
 $check_email = "select * from users where email ='$email'";
@@ -80,9 +85,14 @@ if(mysql_num_rows($run)>0){
 
 //Session variable = username	
 $_SESSION["mail"] = $username;
+
+//Session variable = questionnaire not taken	
+$_SESSION["questaken"] = 0;
+
+//Insert user to db
 $query = "insert into users (username,email,password) values ('$username','$email','$password')";
 
-//Open main content page
+//Open main content page if success
 if(mysql_query($query)){
 	echo "<script>window.open('maincontent.php','_self')</script>";
 }

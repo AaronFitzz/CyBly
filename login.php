@@ -35,10 +35,10 @@ if($check_pass>0){
     while($rspass = mysqli_fetch_assoc($querypass)){
         $UserPass= $rspass['password'];
         $UserID= $rspass['username'];
+        $QTaken = $rspass['questionnairetaken'];
         $_SESSION["mail"] = $UserID;
+        $_SESSION["questaken"] = $QTaken;
     }
-    $currentPassword = '$2a$15$Ku2hb./9aA71tPo/E015h.LsNjXrZe8pyRwXOCpSnGb0nPZuxeZP2';
-    $checkPassword = 'passwords';
 
     if (password_verify($password, $UserPass)) {
         echo "<script>window.open('maincontent.php','_self')</script>";

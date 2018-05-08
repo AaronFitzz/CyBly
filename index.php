@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+<!--Page substantially adapted from: https://www.npmjs.com/package/startbootstrap-creative
+    Front end basic html template
+    Accessed December 2017-->
 <?php
   session_start();
+  include("visualisation.php");
 ?>
 <html lang="en">
 
@@ -27,6 +31,78 @@
   <link href="css/creative.css" rel="stylesheet">
   
   <script src='https://www.google.com/recaptcha/api.js'></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var month1 = Number("<?php echo $_SESSION['month1']; ?>");
+        var month2 = Number("<?php echo $_SESSION['month2']; ?>");
+        var month3 = Number("<?php echo $_SESSION['month3']; ?>");
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Past Month Encountered Cyber-Bullying'],
+          ['No', month1],
+          ['Cant Recall', month2],
+          ['Yes', month3]
+        ]);
+
+        var options = {
+          title: 'Have our users seen what they believe was Cyber-Bullying in the past month'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('monthPie'));
+
+        chart.draw(data, options);
+      }
+      
+      google.charts.setOnLoadCallback(drawChart2);
+
+      function drawChart2() {
+        var prev1 = Number("<?php echo $_SESSION['prevelant1']; ?>");
+        var prev2 = Number("<?php echo $_SESSION['prevelant2']; ?>");
+        var prev3 = Number("<?php echo $_SESSION['prevelant3']; ?>");
+        var prev4 = Number("<?php echo $_SESSION['prevelant4']; ?>");
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Where our users believe Cyber-Bullying is most prevelant'],
+          ['Social Media', prev1],
+          ['Gaming', prev2],
+          ['SMS/Email', prev3],
+          ['Other', prev4]
+        ]);
+
+        var options = {
+          title: 'Where our users believe Cyber-Bullying is most prevelant'
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('prevBar'));
+
+        chart.draw(data, options);
+      }
+      
+      google.charts.setOnLoadCallback(drawChart3);
+
+      function drawChart3() {
+        var res1 = Number("<?php echo $_SESSION['resource1']; ?>");
+        var res2 = Number("<?php echo $_SESSION['resource2']; ?>");
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Do our users believe more needs to be done to tackle Cyber-Bullying?'],
+          ['No', res1],
+          ['Yes', res2]
+        ]);
+
+        var options = {
+          title: 'Do our users believe more needs to be done to tackle Cyber-Bullying?'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('resPie'));
+
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 
 <body id="page-top">
@@ -59,15 +135,18 @@
             <a class="nav-link js-scroll-trigger" href="#questionnaire">Questionnaire</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#challengeD">30 Sec Challenge</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#data">Data Visualisation</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact & Advice</a>
           </li>
           <?php
               if($_SESSION['mail'] != null){
                 echo '<li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" onclick="confirmBeforeLogout();" >Logout</a>
+                        <a class="nav-link js-scroll-trigger" href="#" onclick="confirmBeforeLogout();" >Sign out</a>
                       </li>';  
               }
             ?>
@@ -108,7 +187,6 @@
               include 'contentref.php';
             }
           ?>
-          
         </div>
       </div>
     </div>
@@ -142,24 +220,6 @@
     </div>
   </section>
 
-  <!--can remove if register working okay-->
-
-  <!--<section class="bg-primary" id="registerDetail">-->
-  <!--  <div class="container">-->
-  <!--    <div class="row">-->
-  <!--      <div class="col-lg-8 mx-auto text-center">-->
-  <!--        <h2 class="section-heading text-white">Register</h2>-->
-  <!--        <hr class="light my-4">-->
-  <!--    			<input type="text" placeholder="Username"><br>-->
-  <!--    			<input type="email" placeholder="Email"><br>-->
-  <!--    			<input type="password" placeholder="Password"><br>-->
-  <!--    			<input type="password" placeholder="Confirm Password"><br>-->
-  <!--        <a class="btn btn-light btn-xl js-scroll-trigger" id="registerBtnPlace">Register</a>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</section>-->
-
   <section class="bg-dark text-white" id="tool">
     <div class="container">
       <div class="row">
@@ -167,7 +227,7 @@
           <h2 class="section-heading text-white">Text Analysation Tool</h2>
           <hr class="light my-4">
           <p class="text-faded mb-4">Download this tool to analyse any text for the likelihood of cyber bullying. A measurement is given based on the presence of offensive material and if it is aimed at an individual or group.</p>
-          <a class="btn btn-light btn-xl js-scroll-trigger" id="textAnalBtn" href="#signInPlace">Sign Up/Register to Access</a>
+          <a class="btn btn-light btn-xl js-scroll-trigger" id="textAnalBtn" href="#signInPlace">Sign In/Register to Access</a>
         </div>
       </div>
     </div>
@@ -180,127 +240,61 @@
           <h2 class="section-heading text-white">Take A Questionnaire</h2>
           <hr class="light my-4">
           <p class="text-faded mb-4">Contribute your experience and help the community understand patterns in Cyber Bullying</p>
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="#signInPlace">Sign Up/Register to Access</a>
+          <a class="btn btn-light btn-xl js-scroll-trigger" href="#signInPlace">Sign In/Register to Access</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="bg-dark text-white" id="challengeD">
+    <div class="container">
+      <div class="row">
+         <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-heading text-white">Take the 30 second challenge!</h2>
+          <hr class="light my-4">
+          <p class="text-faded mb-4">Learn about cyber bullying and answer questions to show your knowledge.</p>
+          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#signInPlace" >Sign In/Register to Access</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="p-0" id="data">
-    <div class="container-fluid p-0">
-      <div class="row no-gutters popup-gallery">
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/chart1.png">
-              <img class="img-fluid" src="img/chart1.png" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Data
-                  </div>
-                  <div class="project-name">
-                    Visualisation
-                  </div>
-                </div>
-              </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/chart2.png">
-              <img class="img-fluid" src="img/chart2.png" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Data
-                  </div>
-                  <div class="project-name">
-                    Visualisation
-                  </div>
-                </div>
-              </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/chart3.png">
-              <img class="img-fluid" src="img/chart3.png" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Data
-                  </div>
-                  <div class="project-name">
-                    Visualisation
-                  </div>
-                </div>
-              </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/chart4.png">
-              <img class="img-fluid" src="img/chart4.png" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Data
-                  </div>
-                  <div class="project-name">
-                    Visualisation
-                  </div>
-                </div>
-              </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/chart5.png">
-              <img class="img-fluid" src="img/chart5.png" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Data
-                  </div>
-                  <div class="project-name">
-                    Visualisation
-                  </div>
-                </div>
-              </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/chart6.png">
-              <img class="img-fluid" src="img/chart6.png" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Data
-                  </div>
-                  <div class="project-name">
-                    Visualisation
-                  </div>
-                </div>
-              </div>
-            </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="bg" id="data">
+          <h2 class="section-heading text-black mx-auto text-center">Our Data - Visualised</h2>
+          <hr class="dark my-4">
+          <div class="row">
+            <div class="col-lg-4 mx-auto text-center">
+                <div id="monthPie" style="max-width=100%;"></div>
+            </div>
+            <div class="col-lg-4 mx-auto text-center">
+                <div id="prevBar" style="max-width=100%;"></div>
+            </div>
+            <div class="col-lg-4 mx-auto text-center">
+                <div id="resPie" style="max-width=100%;"></div>
+            </div>
+          </div>
+        </section>
 
-  <section id="contact">
+  <section class="bg-primary" id="contact">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
-          <h2 class="section-heading">Let's Get In Touch!</h2>
-          <hr class="my-4">
-          <p class="mb-5">If you have any questions please get in touch using one of the methods below.</p>
+          <h2 class="section-heading">Get advice and stay in touch!</h2>
+          <hr class="light my-4">
+          <p class="mb-5">If you need and advice or help, click the link below. Feel free to send any queries to our email.</p>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-4 ml-auto text-center">
-          <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
-          <p>123-456-6789</p>
+          
+          <i class="fa fa-mouse-pointer fa-3x mb-3 sr-contact"></i>
+          <p><a style="color: black;" target="_blank" href="http://www.sticksandstones.ie/bullying/cyber-bullying/">Get Advice and Help</a></p>
+         
         </div>
         <div class="col-lg-4 mr-auto text-center">
           <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
           <p>
-            <a href="mailto:your-email@your-domain.com">demo@CyBly.com</a>
+            <a style="color: black;" href="mailto:your-email@your-domain.com">demo@CyBly.com</a>
           </p>
         </div>
       </div>

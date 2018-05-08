@@ -10,5 +10,10 @@ function confirmBeforeLogout() {
 function Logout(){
   window.location.href = "logout.php";
 }
-  
+
+//Disable button onclick in maincontent
+function disableBtn(){
+  document.getElementById("challengeBtn").disabled = true;
+}
+
   

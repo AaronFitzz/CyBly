@@ -35,6 +35,10 @@ $("#challengeBtn").click(function(){
 	$('#challengeQ').delay(30000).fadeIn();
 });
 
+$("#visualBtn").click(function(){
+	$("#visualQ").fadeIn("slow");
+});
+
 
 
   // Closes responsive menu when a scroll trigger link is clicked
