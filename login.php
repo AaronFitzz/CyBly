@@ -28,7 +28,7 @@ $password = $_GET['password'];
 $sel_user = "SELECT * FROM users WHERE email = '$emailuser' OR username = '$emailuser'";
 
 //Select user query
-$run_user = mysqli_query($con, $sel_user);
+$run_user = $connection->query($sel_user);
 
 //Store number of rows from query
 $check_pass = mysqli_num_rows($run_user);
@@ -36,7 +36,7 @@ $check_pass = mysqli_num_rows($run_user);
 //Run selection query to check password using password_verify method
 if($check_pass>0){
     $retrpass = "select * from users where email='$emailuser' OR username = '$emailuser'";
-    $querypass = mysqli_query($con, $retrpass);
+    $querypass = $connection->query($retrpass);
     while($rspass = mysqli_fetch_assoc($querypass)){
         $UserPass= $rspass['password'];
         $UserID= $rspass['username'];

@@ -68,7 +68,7 @@ $check_email = "select * from users where email ='$email'";
 $run = $connection->query($check_email);
 
 //Check number of results in query, if more than 0 than email taken
-if(mysql_num_rows($run)>0){
+if(mysqli_num_rows($run)>0){
 	echo "<script>alert('The email $email is already registered to another users account, please try a different one')</script>";
 	echo "<script>window.open('index.php','_self')</script>";
 	exit();
@@ -81,7 +81,7 @@ $check_username = "select * from users where username='$username'";
 $run = $connection->query($check_username);
 
 //If anyone has this username, return error
-if(mysql_num_rows($run)>0){
+if(mysqli_num_rows($run)>0){
 	echo "<script>alert('The username $username is already taken, please choose another one')</script>";
 	echo "<script>window.open('index.php','_self')</script>";
 	exit();
