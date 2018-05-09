@@ -8,7 +8,12 @@
 session_start();
 
 //Connect to database
-$con = mysqli_connect("localhost","root","","cybly");
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$server = $url["host"];
+$dbusername = $url["user"];
+$dbpassword = $url["pass"];
+$db = substr($url["path"], 1);
+$connection = new mysqli($server, $dbusername, $dbpassword, $db);
 
 //If can't connect to db, return error
 if (mysqli_connect_errno()){
@@ -30,9 +35,9 @@ else{
     $resource_data2_string =  "SELECT COUNT(moreresource) FROM visualdata WHERE moreresource = 2";
     
     //Select data queries
-    $month_data1 = mysqli_query($con, $month_data1_string);
-    $month_data2 = mysqli_query($con, $month_data2_string);
-    $month_data3 = mysqli_query($con, $month_data3_string);
+    $month_data1 = $connection->query($month_data1_string);
+    $month_data2 = $connection->query($month_data2_string);
+    $month_data3 = $connection->query($month_data3_string);
     
     //access results to be able to store to variable
     while($res = mysqli_fetch_assoc($month_data1)){
@@ -45,10 +50,10 @@ else{
         $month_data3_res = $res['COUNT(monthbully)'];
     }
     
-    $prevelant_data1 = mysqli_query($con, $prevelant_data1_string);
-    $prevelant_data2 = mysqli_query($con, $prevelant_data2_string);
-    $prevelant_data3 = mysqli_query($con, $prevelant_data3_string);
-    $prevelant_data4 = mysqli_query($con, $prevelant_data4_string);
+    $prevelant_data1 = $connection->query($prevelant_data1_string);
+    $prevelant_data2 = $connection->query($prevelant_data2_string);
+    $prevelant_data3 = $connection->query($prevelant_data3_string);
+    $prevelant_data4 = $connection->query($prevelant_data4_string);
     
     while($res = mysqli_fetch_assoc($prevelant_data1)){
         $prevelant_data1_res = $res['COUNT(cbprevelant)'];
@@ -63,8 +68,8 @@ else{
         $prevelant_data4_res = $res['COUNT(cbprevelant)'];
     }
     
-    $resource_data1 = mysqli_query($con, $resource_data1_string);
-    $resource_data2 = mysqli_query($con, $resource_data2_string);
+    $resource_data1 = $connection->query($resource_data1_string);
+    $resource_data2 = $connection->query($resource_data2_string);
     
     while($res = mysqli_fetch_assoc($resource_data1)){
         $resource_data1_res = $res['COUNT(moreresource)'];
