@@ -17,8 +17,12 @@ else
 session_start();
 
 //Connet to the database
-mysql_connect("localhost","root","");
-mysql_select_db("cybly");
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$server = $url["host"];
+$dbusername = $url["user"];
+$dbpassword = $url["pass"];
+$db = substr($url["path"], 1);
+$connection = new mysqli($server, $dbusername, $dbpassword, $db);
 	
 //Extract values from html form 'name' tags
 $username = $_POST['username'];

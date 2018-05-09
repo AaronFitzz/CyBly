@@ -8,7 +8,12 @@
 session_start();
 
 //Connect to database
-$con = mysqli_connect("localhost","root","","cybly");
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$server = $url["host"];
+$dbusername = $url["user"];
+$dbpassword = $url["pass"];
+$db = substr($url["path"], 1);
+$connection = new mysqli($server, $dbusername, $dbpassword, $db);
 
 //If can't connect to db, return error
 if (mysqli_connect_errno()){
