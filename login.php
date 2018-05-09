@@ -39,6 +39,8 @@ if($check_pass>0){
     $querypass = $connection->query($retrpass);
     while($rspass = mysqli_fetch_assoc($querypass)){
         $UserPass= $rspass['password'];
+        $UserID= $rspass['username'];
+        $QTaken = $rspass['questionnairetaken'];
     }
 
     if (password_verify($password, $UserPass)) {
@@ -48,12 +50,8 @@ if($check_pass>0){
 	    echo "<script>window.open('index.php','_self')</script>";
     }
     
-    while($rspass = mysqli_fetch_assoc($querypass)){
-        $UserID= $rspass['username'];
-        $QTaken = $rspass['questionnairetaken'];
-        $_SESSION["mail"] = $UserID;
-        $_SESSION["questaken"] = $QTaken;
-    }
+    $_SESSION["mail"] = $UserID;
+    $_SESSION["questaken"] = $QTaken;
 }
 
 //Blank email/password, retry
