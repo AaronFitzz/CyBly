@@ -44,14 +44,13 @@ if($check_pass>0){
     }
 
     if (password_verify($password, $UserPass)) {
+        $_SESSION["mail"] = $UserID;
+        $_SESSION["questaken"] = $QTaken;
         echo "<script>window.open('maincontent.php','_self')</script>";
     } else {
         echo "<script>alert('You entered the wrong password')</script>";
 	    echo "<script>window.open('index.php','_self')</script>";
     }
-    
-    $_SESSION["mail"] = $UserID;
-    $_SESSION["questaken"] = $QTaken;
 }
 
 //Blank email/password, retry
