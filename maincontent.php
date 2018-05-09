@@ -23,16 +23,16 @@
   <title>CyBly</title>
 
   <!--Bootstrap CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="v/bootstrap/css/bootstrap.css" rel="stylesheet">
 
   <!--Custom fonts used-->
   <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="v/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
   <!--CSS-->
   <link href="css/creative.css" rel="stylesheet">
-  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+  <link href="v/magnific-popup/magnific-popup.css" rel="stylesheet">
   
   <!--JS-->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -406,13 +406,13 @@
   </section>
 
   <!-- Bootstrap JS -->
-  <script src="vendor/jquery/jquery.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="v/jquery/jquery.js"></script>
+  <script src="v/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- JS Plugin -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <script src="v/jquery-easing/jquery.easing.min.js"></script>
+  <script src="v/scrollreveal/scrollreveal.min.js"></script>
+  <script src="v/magnific-popup/jquery.magnific-popup.min.js"></script>
 
   <!-- Custom js/jquery scripts-->
   <script src="js/creative.js"></script>
