@@ -4,8 +4,12 @@
 session_start();
 
 //Connect to the database
-mysql_connect("localhost","root","");
-mysql_select_db("cybly");
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$server = $url["host"];
+$dbusername = $url["user"];
+$dbpassword = $url["pass"];
+$db = substr($url["path"], 1);
+$connection = new mysqli($server, $dbusername, $dbpassword, $db);
 	
 //Extract values from html form 'name' tags
 $q1ans = $_POST['q1'];
@@ -37,8 +41,8 @@ $update_string = "UPDATE users SET questionnairetaken = 1 WHERE username = '$use
 $insert_string = "insert into visualdata (monthbully,cbprevelant,moreresource) values ('$q1ans','$q2ans','$q3ans')";
 
 //Open main content page if validated
-if(mysql_query($insert_string)){
-    if(mysql_query($update_string)){
+if($connection->query($insert_string)){
+    if($connection->query($update_string)){
         $_SESSION["questaken"] = 1;
 	echo "<script>window.open('maincontent.php','_self')</script>";
 }
