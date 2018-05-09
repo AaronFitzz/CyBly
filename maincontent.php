@@ -166,7 +166,7 @@
           <h2 class="section-heading text-white">Text Analysation Tool</h2>
           <hr class="light my-4">
           <p class="text-faded mb-4">Download this tool to analyse any text for the likelihood of cyber bullying. A indication is given based on the presence of offensive material and if it is aimed at an individual or group. (PC Only)</p>
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="analyser/TextAnalyserTool.exe">Download Now</a>
+          <a class="btn btn-light btn-xl js-scroll-trigger" href="infinite-waters-98014.herokuapp.com/analyser/TextTool.zip">Download Now</a>
         </div>
       </div>
     </div>
