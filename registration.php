@@ -65,7 +65,7 @@ $password = password_hash($password, PASSWORD_BCRYPT);
 $check_email = "select * from users where email ='$email'";
 
 //Run get user by email query
-$run = mysql_query($check_email);
+$run = $connection->query($check_email);
 
 //Check number of results in query, if more than 0 than email taken
 if(mysql_num_rows($run)>0){
@@ -78,7 +78,7 @@ if(mysql_num_rows($run)>0){
 $check_username = "select * from users where username='$username'";
 
 //Run get username query
-$run = mysql_query($check_username);
+$run = $connection->query($check_username);
 
 //If anyone has this username, return error
 if(mysql_num_rows($run)>0){
@@ -97,7 +97,7 @@ $_SESSION["questaken"] = 0;
 $query = "insert into users (username,email,password) values ('$username','$email','$password')";
 
 //Open main content page if success
-if(mysql_query($query)){
+if($connection->query($query)){
 	echo "<script>window.open('maincontent.php','_self')</script>";
 }
 }
