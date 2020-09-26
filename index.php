@@ -3,7 +3,10 @@
     Front end basic html template
     Accessed December 2017-->
 <?php
-  session_start();
+  if(!isset($_SESSION))
+  {
+    session_start();
+  }
   include("visualisation.php");
 ?>
 <html lang="en">
@@ -29,7 +32,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/creative.css" rel="stylesheet">
-  
+
   <script src='https://www.google.com/recaptcha/api.js'></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -56,7 +59,7 @@
 
         chart.draw(data, options);
       }
-      
+
       google.charts.setOnLoadCallback(drawChart2);
 
       function drawChart2() {
@@ -81,7 +84,7 @@
 
         chart.draw(data, options);
       }
-      
+
       google.charts.setOnLoadCallback(drawChart3);
 
       function drawChart3() {
@@ -119,8 +122,8 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#signInPlace">
             <?php
-              if($_SESSION['mail'] != null){
-                echo "Welcome " . $_SESSION['mail'] . "";  
+              if(isset($_SESSION['mail'])){
+                echo "Welcome " . $_SESSION['mail'] . "";
               }
               else{
                 echo "Sign In/Register";
@@ -144,10 +147,10 @@
             <a class="nav-link js-scroll-trigger" href="#contact">Contact & Advice</a>
           </li>
           <?php
-              if($_SESSION['mail'] != null){
+              if(isset($_SESSION['mail'])){
                 echo '<li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#" onclick="confirmBeforeLogout();" >Sign out</a>
-                      </li>';  
+                      </li>';
               }
             ?>
         </ul>
@@ -176,8 +179,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
-          <?php  
-            if($_SESSION['mail'] == null){
+          <?php
+            if(!isset($_SESSION['mail'])){
               echo '<h2 class="section-heading text-white">Get Started</h2>
                     <hr class="light my-4">
                     <p class="text-faded mb-4">Sign in to access the full features of CyBly.</p>
@@ -245,7 +248,7 @@
       </div>
     </div>
   </section>
-  
+
   <section class="bg-dark text-white" id="challengeD">
     <div class="container">
       <div class="row">
@@ -286,10 +289,10 @@
       </div>
       <div class="row">
         <div class="col-lg-4 ml-auto text-center">
-          
+
           <i class="fa fa-mouse-pointer fa-3x mb-3 sr-contact"></i>
           <p><a style="color: black;" target="_blank" href="http://www.sticksandstones.ie/bullying/cyber-bullying/">Get Advice and Help</a></p>
-         
+
         </div>
         <div class="col-lg-4 mr-auto text-center">
           <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>

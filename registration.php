@@ -12,18 +12,18 @@ echo "<script>alert('Please complete the Captcha')</script>";
 else
 {
 //successful
-  
+
 //Start or resume session, used for cookie data
 session_start();
 
 //Connet to the database
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$server = $url["host"];
-$dbusername = $url["user"];
-$dbpassword = $url["pass"];
-$db = substr($url["path"], 1);
+//$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$server = "us-cdbr-iron-east-04.cleardb.net";
+$dbusername = "b06be7958abd62";
+$dbpassword = "d2a311d6";
+$db = "heroku_664869670b7b7c5";
 $connection = new mysqli($server, $dbusername, $dbpassword, $db);
-	
+
 //Extract values from html form 'name' tags
 $username = $_POST['username'];
 $email = $_POST['email'];
@@ -36,7 +36,7 @@ if($username==''||$username==null|strlen($username)<"3"){
 	echo "<script>window.open('index.php','_self')</script>";
 	exit();
 }
-	
+
 //Validate password
 if($password==''||$password==null||strlen($password)<"7"){
 	echo "<script>alert('Password must be at least 7 characters long')</script>";
@@ -50,7 +50,7 @@ if($password != $confPassword){
 	echo "<script>window.open('index.php','_self')</script>";
 	exit();
 }
-	
+
 //Validate email
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   	echo "<script>alert('Please enter a valid email')</script>";
@@ -87,10 +87,10 @@ if(mysqli_num_rows($run)>0){
 	exit();
 }
 
-//Session variable = username	
+//Session variable = username
 $_SESSION["mail"] = $username;
 
-//Session variable = questionnaire not taken	
+//Session variable = questionnaire not taken
 $_SESSION["questaken"] = 0;
 
 //Insert user to db

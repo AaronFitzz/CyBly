@@ -6,7 +6,7 @@
   //start or resume session
   session_start();
   //if not signed in, send back to index.
-  if($_SESSION['mail'] == null){
+  if(!isset($_SESSION['mail'])){
     echo "<script>window.open('index.php','_self')</script>";
   }
   //run visualisation file to retrieve up to date visual data
@@ -33,7 +33,7 @@
   <!--CSS-->
   <link href="css/creative.css" rel="stylesheet">
   <link href="v/magnific-popup/magnific-popup.css" rel="stylesheet">
-  
+
   <!--JS-->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -60,7 +60,7 @@
 
         chart.draw(data, options);
       }
-      
+
       google.charts.setOnLoadCallback(drawChart2);
 
       function drawChart2() {
@@ -85,9 +85,9 @@
 
         chart.draw(data, options);
       }
-      
+
       google.charts.setOnLoadCallback(drawChart3);
-      
+
       function drawChart3() {
         var res1 = Number("<?php echo $_SESSION['resource1']; ?>");
         var res2 = Number("<?php echo $_SESSION['resource2']; ?>");
@@ -123,7 +123,7 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#tool">Download Tool</a>
           </li>
-          <?php 
+          <?php
           if($_SESSION['questaken'] == '0'){
             echo '<li class="nav-item">';
             echo '<a class="nav-link js-scroll-trigger" href="#questionnaire">Questionnaire</a>';
@@ -146,7 +146,7 @@
       </div>
     </div>
   </nav>
-  
+
   <section class="bg-dark text-white text-center" id="welcome">
     <h1><?php echo "Welcome " . $_SESSION['mail'] . "";?></h1>
   </section>
@@ -171,7 +171,7 @@
       </div>
     </div>
   </section>
-  
+
   <section class="bg-primary text-white" id="challengeD">
     <div class="container">
       <div class="row">
@@ -182,7 +182,7 @@
             <?php
               if($_SESSION['mark'] == null){
                 echo 'Learn about cyber bullying and answer questions to show your knowledge.';
-               
+
               }
               else{
                 echo 'You scored: ';
@@ -195,8 +195,8 @@
       </div>
     </div>
   </section>
-  
- 
+
+
   <script>
     window.onload = function hideChal() {
       document.getElementById("challenge").style.display = "none";
@@ -239,7 +239,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="bg-primary" id="challengeQ">
     <div class="container">
       <div class="row">
@@ -260,9 +260,9 @@
             <div class="text-white col-lg-3 mx-auto text-center">
               90 <input type="radio"  id="q1d" name="q1" value="90">
             </div>
-            
+
             <hr class="light my-4">
-            
+
             <h3 class="text-white">What is the primary medium for cyber bullying?</h3>
             <div class="text-white col-lg-3 mx-auto text-center">
               Mobile Phones <input type="radio" id="q2a" name="q2" value="mobile">
@@ -273,9 +273,9 @@
             <div class="text-white col-lg-3 mx-auto text-center">
               Games Consoles <input type="radio" id="q2c" name="q2" value="console">
             </div>
-            
+
             <hr class="light my-4">
-            
+
             <h3 class="text-white">How many victims report cyber bullying to a parent or trusted adult?</h3>
             <div class="text-white col-lg-3 mx-auto text-center">
               5 in 10 <input type="radio"id="q3a" name="q3" value="5in10">
@@ -289,9 +289,9 @@
             <div class="text-white col-lg-3 mx-auto text-center">
               1 in 10 <input type="radio"  id="q3d" name="q3" value="1in10">
             </div>
-            
+
             <hr class="light my-4">
-            
+
             <h3 class="text-white">Who is more likely to be bullied online?</h3>
             <div class="text-white col-lg-3 mx-auto text-center">
               Boys <input type="radio"id="q4a" name="q4" value="boys">
@@ -299,9 +299,9 @@
             <div class="text-white col-lg-3 mx-auto text-center">
               Girls <input type="radio" id="q4b" name="q4" value="girls">
             </div>
-            
+
             <hr class="light my-4">
-            
+
             <h3 class="text-white">How many adults say they have been bullied online?</h3>
             <div class="text-white col-lg-3 mx-auto text-center">
               4 in 10 <input type="radio"id="q5a" name="q5" value="4in10">
@@ -315,9 +315,9 @@
             <div class="text-white col-lg-3 mx-auto text-center">
               1 in 10 <input type="radio"  id="q5d" name="q5" value="1in10">
             </div>
-            
+
             <hr class="light my-4">
-            
+
             <h3 class="text-white">What platform sees the most cyber bullying?</h3>
             <div class="text-white col-lg-3 mx-auto text-center">
               Twitter <input type="radio"id="q6a" name="q6" value="twitter">
@@ -331,9 +331,9 @@
             <div class="text-white col-lg-3 mx-auto text-center">
               YouTube <input type="radio"  id="q6d" name="q6" value="youtube">
             </div>
-            
+
             <hr class="light my-4">
-            
+
             <h3 class="text-white">What is the most common action taken by victims of cyber bullying?</h3>
             <div class="text-white col-lg-3 mx-auto text-center">
               No Action <input type="radio"id="q7a" name="q7" value="none">
@@ -347,21 +347,21 @@
             <div class="text-white col-lg-3 mx-auto text-center">
               Unfriend Them <input type="radio"  id="q7d" name="q7" value="unfriend">
             </div>
-            
+
             <input class="btn btn-light btn-xl js-scroll-trigger" id="queSubmit" type="submit" value="Submit">
           </form>
         </div>
       </div>
     </div>
   </div>
-  
+
   <?php
     if($_SESSION['questaken'] == '0'){
       include 'quescontent.php';
     }else{
     }
     ?>
-      
+
         <section class="bg" id="data">
           <h2 class="section-heading text-black mx-auto text-center">Our Data - Visualised</h2>
           <hr class="dark my-4">
@@ -377,7 +377,7 @@
             </div>
           </div>
         </section>
-  
+
 
   <section class="bg-primary" id="contact">
     <div class="container">
@@ -390,10 +390,10 @@
       </div>
       <div class="row">
         <div class="col-lg-4 ml-auto text-center">
-          
+
           <i class="fa fa-mouse-pointer fa-3x mb-3 sr-contact"></i>
           <p><a style="color: black;" target="_blank" href="http://www.sticksandstones.ie/bullying/cyber-bullying/">Get Advice and Help</a></p>
-         
+
         </div>
         <div class="col-lg-4 mr-auto text-center">
           <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
