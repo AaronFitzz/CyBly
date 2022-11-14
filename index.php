@@ -163,7 +163,7 @@
       <div class="row">
         <div class="col-lg-10 mx-auto">
           <h1 class="text-uppercase">
-            <strong>Lets tackle Cyber Bullying</strong>
+            <strong>Lets tackle Cyber Bullying, together!</strong>
           </h1>
           <hr>
         </div>
