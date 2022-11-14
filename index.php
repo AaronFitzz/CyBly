@@ -229,7 +229,7 @@
         <div class="col-lg-8 mx-auto text-center">
           <h2 class="section-heading text-white">Text Analysation Tool</h2>
           <hr class="light my-4">
-          <p class="text-faded mb-4">Download this tool to analyse any text for the likelihood of cyber bullying. A measurement is given based on the presence of offensive material and if it is aimed at an individual or group.</p>
+          <p class="text-faded mb-4">Download this tool to analyse any text for the likelihood of cyber bullying. A measurement is given based on the presence of offensive material and if it is aimed at an individual or group</p>
           <a class="btn btn-light btn-xl js-scroll-trigger" id="textAnalBtn" href="#signInPlace">Sign In/Register to Access</a>
         </div>
       </div>
